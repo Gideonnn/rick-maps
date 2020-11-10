@@ -15,7 +15,7 @@
 
 <script>
 import { latLng } from 'leaflet';
-import { LMap, LTileLayer, LMarker, LPopup, LTooltip } from 'vue2-leaflet';
+import { LMap, LMarker, LPopup, LTileLayer, LTooltip } from 'vue2-leaflet';
 
 export default {
   name: 'Example',
@@ -31,7 +31,6 @@ export default {
       zoom: 13,
       center: latLng(51.69917, 5.30417),
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      // attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       currentZoom: 11.5,
       currentCenter: null,
@@ -42,14 +41,24 @@ export default {
       showMap: true,
     };
   },
+  created() {
+    this.currentCenter = this.center;
+    this.update();
+  },
   methods: {
     zoomUpdate(zoom) {
       this.currentZoom = zoom;
-      console.log(this.currentZoom);
+      this.update();
     },
     centerUpdate(center) {
       this.currentCenter = center;
-      console.log({ ...this.currentCenter });
+      this.update();
+    },
+    update() {
+      this.$emit('update', {
+        center: this.currentCenter,
+        zoom: this.currentZoom,
+      });
     },
   },
 };
@@ -57,8 +66,8 @@ export default {
 
 <style scoped>
 .wrapper {
-  height: 500px;
-  width: 600px;
+  height: 100%;
+  width: 100%;
 }
 </style>
 

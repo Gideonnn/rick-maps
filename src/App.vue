@@ -1,22 +1,26 @@
 <template>
-  <base-layout>
-    <template v-slot:main>
-      <poster-map />
-    </template>
-  </base-layout>
+  <v-app>
+    <NavBar :routes="routes" />
+
+    <v-main class="grey lighten-3">
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import BaseLayout from './components/BaseLayout.vue';
-import PosterMap from './components/PosterMap.vue';
+import NavBar from '@/components/NavBar';
+import { routes } from '@/router';
 
 export default {
   name: 'App',
   components: {
-    PosterMap,
-    BaseLayout,
+    NavBar,
   },
+  data: () => ({
+    routes,
+  }),
 };
 </script>
-
-<style></style>

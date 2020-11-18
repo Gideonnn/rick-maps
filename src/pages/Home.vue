@@ -8,7 +8,7 @@
       </v-col>
 
       <v-col cols="12" sm="8">
-        <v-sheet rounded="lg" class="pa-md-3">
+        <v-sheet rounded="lg" class="pa-3">
           <div class="outer">
             <div class="inner">
               <poster-map @update="onUpdate" />
@@ -23,7 +23,7 @@
     </v-row>
 
     <v-row>
-      <v-col offset-md="2" cols="12" sm="8">
+      <v-col offset-sm="2" cols="12" sm="8">
         <v-sheet rounded="lg" class="pa-md-3">
           <v-list>
             <v-list-item>
